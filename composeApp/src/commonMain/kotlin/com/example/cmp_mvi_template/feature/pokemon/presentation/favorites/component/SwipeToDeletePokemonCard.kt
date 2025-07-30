@@ -20,8 +20,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import cmp_mvi_template.composeapp.generated.resources.Res
+import cmp_mvi_template.composeapp.generated.resources.delete
 import com.example.cmp_mvi_template.feature.pokemon.domain.entity.Pokemon
 import com.example.cmp_mvi_template.feature.pokemon.presentation.component.PokemonCard
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SwipeToDeletePokemonCard(
@@ -84,7 +87,7 @@ private fun DismissBackground(dismissState: SwipeToDismissBoxState) {
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete",
+                    contentDescription = stringResource(Res.string.delete),
                     tint = MaterialTheme.colorScheme.onError,
                     modifier = Modifier.padding(end = 16.dp)
                 )

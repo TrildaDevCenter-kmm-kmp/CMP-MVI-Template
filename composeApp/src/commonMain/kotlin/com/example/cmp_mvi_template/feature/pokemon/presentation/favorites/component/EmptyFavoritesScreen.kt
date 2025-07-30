@@ -13,9 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import cmp_mvi_template.composeapp.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun EmptyFavoritesState() {
+fun EmptyFavoritesScreen() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -29,7 +31,7 @@ fun EmptyFavoritesState() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "No Favorite Pokemon",
+            text = stringResource(Res.string.no_favorite_pokemon),
             style = MaterialTheme.typography.headlineSmall,
             textAlign = TextAlign.Center
         )
@@ -37,7 +39,7 @@ fun EmptyFavoritesState() {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Add some Pokemon to your favorites from the Pokemon list!",
+            text = stringResource(Res.string.add_favorite_hint),
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant,

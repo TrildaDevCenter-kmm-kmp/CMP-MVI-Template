@@ -20,11 +20,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import cmp_mvi_template.composeapp.generated.resources.Res
+import cmp_mvi_template.composeapp.generated.resources.title_settings
 import com.example.cmp_mvi_template.core.utility.ObserveAsEvents
 import com.example.cmp_mvi_template.feature.setting.presentation.component.DynamicThemeToggleAndroidOnly
 import com.example.cmp_mvi_template.feature.setting.presentation.component.ThemePreview
 import com.example.cmp_mvi_template.feature.setting.presentation.component.ThemeSelectionDialog
 import com.example.cmp_mvi_template.feature.setting.presentation.component.ThemeSelectionRow
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +54,7 @@ fun SettingScreen() {
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text("Setting") }
+                title = { Text(stringResource(Res.string.title_settings)) }
             )
         },
         snackbarHost = {

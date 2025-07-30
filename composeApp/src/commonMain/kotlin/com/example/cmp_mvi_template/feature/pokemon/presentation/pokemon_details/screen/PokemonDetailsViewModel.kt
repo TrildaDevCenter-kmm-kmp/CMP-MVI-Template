@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import cmp_mvi_template.composeapp.generated.resources.*
 import com.example.cmp_mvi_template.core.domain.onError
 import com.example.cmp_mvi_template.core.domain.onSuccess
 import com.example.cmp_mvi_template.core.domain.toUiText
@@ -103,13 +104,13 @@ class PokemonDetailsViewModel(
                             isTogglingFavorite = false
                         ) 
                     }
-                    
+
                     val message = if (newFavoriteStatus) {
-                        "${pokemon.name} added to favorites"
+                        UiText.StringResource(Res.string.added_to_favorites, pokemon.name)
                     } else {
-                        "${pokemon.name} removed from favorites"
+                        UiText.StringResource(Res.string.removed_from_favorites, pokemon.name)
                     }
-                    _effect.emit(PokemonDetailsEffect.ShowSuccess(UiText.DynamicString(message)))
+                    _effect.emit(PokemonDetailsEffect.ShowSuccess(message))
                 }
                 .onError { error ->
                     _state.update { it.copy(isTogglingFavorite = false) }

@@ -16,10 +16,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import cmp_mvi_template.composeapp.generated.resources.Res
+import cmp_mvi_template.composeapp.generated.resources.title_favorites
 import com.example.cmp_mvi_template.core.utility.ObserveAsEvents
-import com.example.cmp_mvi_template.feature.pokemon.presentation.favorites.component.EmptyFavoritesState
+import com.example.cmp_mvi_template.feature.pokemon.presentation.favorites.component.EmptyFavoritesScreen
 import com.example.cmp_mvi_template.feature.pokemon.presentation.favorites.component.FavoritesListContent
 import com.example.cmp_mvi_template.ui.layout.ErrorMessageLayout
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,7 +55,7 @@ fun FavoritesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Favorites") },
+                title = { Text(stringResource(Res.string.title_favorites)) },
             )
         },
         snackbarHost = { SnackbarHost(snackBarHostState) }
@@ -73,7 +76,7 @@ fun FavoritesScreen(
                 }
 
                 state.favoritesPokemon.isEmpty() -> {
-                    EmptyFavoritesState()
+                    EmptyFavoritesScreen()
                 }
 
                 else -> {

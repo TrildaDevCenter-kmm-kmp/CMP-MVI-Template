@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.LightMode
 import androidx.compose.material.icons.outlined.Smartphone
+import cmp_mvi_template.composeapp.generated.resources.*
 import com.example.cmp_mvi_template.core.utility.IconResource
 import com.example.cmp_mvi_template.core.utility.UiText
 
@@ -15,20 +16,20 @@ enum class ThemeMode(
 ) {
     LIGHT(
         icon = IconResource.ImageVector(Icons.Outlined.LightMode),
-        screenTitle = UiText.DynamicString("Light Theme"),
-        title = UiText.DynamicString("Light"),
-        description = UiText.DynamicString("Always use light theme")
+        screenTitle = UiText.StringResource(Res.string.theme_light_screen_title),
+        title = UiText.StringResource(Res.string.theme_light_title),
+        description = UiText.StringResource(Res.string.theme_light_description)
     ),
     DARK(
         icon = IconResource.ImageVector(Icons.Outlined.DarkMode),
-        screenTitle = UiText.DynamicString("Dark Theme"),
-        title = UiText.DynamicString("Dark"),
-        description = UiText.DynamicString("Always use dark theme")
+        screenTitle = UiText.StringResource(Res.string.theme_dark_screen_title),
+        title = UiText.StringResource(Res.string.theme_dark_title),
+        description = UiText.StringResource(Res.string.theme_dark_description)
     ),
     SYSTEM(
         icon = IconResource.ImageVector(Icons.Outlined.Smartphone),
-        screenTitle = UiText.DynamicString("System Default"),
-        title = UiText.DynamicString("System Default"),
-        description = UiText.DynamicString("Follow system settings")
+        screenTitle = UiText.StringResource(Res.string.theme_system_screen_title),
+        title = UiText.StringResource(Res.string.theme_system_title),
+        description = UiText.StringResource(Res.string.theme_system_description)
     )
 }

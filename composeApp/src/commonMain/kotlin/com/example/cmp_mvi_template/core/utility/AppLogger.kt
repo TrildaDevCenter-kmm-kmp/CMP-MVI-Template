@@ -17,7 +17,7 @@ object AppLogger {
                 emptyList() // No logging in release
             }
         ),
-        tag = "MummysKitchenAI"
+        tag = "CMP-MVI-Template"
     )
 
     inline fun d(tag: String = "", throwable: Throwable? = null, message: () -> String) {

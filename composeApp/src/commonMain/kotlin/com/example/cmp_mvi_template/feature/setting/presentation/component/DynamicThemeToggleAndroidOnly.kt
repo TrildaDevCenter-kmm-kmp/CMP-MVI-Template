@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.cmp_mvi_template.core.platform.theme.platformSupportsDynamicColor
 import com.example.cmp_mvi_template.feature.setting.presentation.screen.SettingState
-
+import cmp_mvi_template.composeapp.generated.resources.*
 @Composable
 fun DynamicThemeToggleAndroidOnly(
     themeState: SettingState,

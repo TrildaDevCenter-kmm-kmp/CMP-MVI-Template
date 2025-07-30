@@ -32,9 +32,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import cmp_mvi_template.composeapp.generated.resources.Res
+import cmp_mvi_template.composeapp.generated.resources.add_to_favorites
+import cmp_mvi_template.composeapp.generated.resources.back
+import cmp_mvi_template.composeapp.generated.resources.remove_from_favorites
 import com.example.cmp_mvi_template.core.utility.ObserveAsEvents
 import com.example.cmp_mvi_template.feature.pokemon.presentation.pokemon_details.component.PokemonDetailsContent
 import com.example.cmp_mvi_template.ui.layout.ErrorMessageLayout
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -73,7 +78,7 @@ fun PokemonDetailsScreen(
                     IconButton(onClick = {
                         pokemonDetailsViewModel.handleEvent(PokemonDetailsEvent.NavigateBack)
                     }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(Res.string.back))
                     }
                 },
                 actions = {
@@ -98,7 +103,11 @@ fun PokemonDetailsScreen(
                                 } else {
                                     Icon(
                                         imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                                        contentDescription = if (isFavorite) "Remove from favorites" else "Add to favorites",
+                                        contentDescription = if (isFavorite) {
+                                            stringResource(Res.string.remove_from_favorites)
+                                        } else {
+                                            stringResource(Res.string.add_to_favorites)
+                                        },
                                         tint = if (isFavorite) Color.Red else LocalContentColor.current
                                     )
                                 }

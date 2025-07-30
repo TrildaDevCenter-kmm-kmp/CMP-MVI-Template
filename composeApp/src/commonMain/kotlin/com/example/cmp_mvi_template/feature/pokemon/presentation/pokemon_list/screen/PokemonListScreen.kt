@@ -24,11 +24,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import cmp_mvi_template.composeapp.generated.resources.Res
+import cmp_mvi_template.composeapp.generated.resources.title_pokemon
 import com.example.cmp_mvi_template.core.utility.ObserveAsEvents
 import com.example.cmp_mvi_template.feature.pokemon.presentation.component.PokemonCard
 import com.example.cmp_mvi_template.feature.pokemon.presentation.component.PokemonListShimmer
 import com.example.cmp_mvi_template.ui.layout.ErrorMessageLayout
 import kotlinx.coroutines.flow.distinctUntilChanged
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,7 +70,7 @@ fun PokemonListScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Pokemon") },
+                title = { Text(stringResource(Res.string.title_pokemon)) },
             )
         },
         snackbarHost = { SnackbarHost(snackBarHostState) },

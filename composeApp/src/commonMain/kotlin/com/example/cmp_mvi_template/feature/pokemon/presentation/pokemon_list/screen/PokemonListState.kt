@@ -8,6 +8,5 @@ data class PokemonListState(
     val isLoading: Boolean = false,
     val error: UiText? = null,
     val isLoadingMore: Boolean = false,
-    val hasMoreData: Boolean = true,
-    val searchQuery: String = ""
+    val hasMoreData: Boolean = true
 )

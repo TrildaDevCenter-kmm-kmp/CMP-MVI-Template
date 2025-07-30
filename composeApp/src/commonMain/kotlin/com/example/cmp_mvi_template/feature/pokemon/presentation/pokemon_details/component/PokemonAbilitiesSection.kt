@@ -21,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import cmp_mvi_template.composeapp.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
 import com.example.cmp_mvi_template.feature.pokemon.domain.entity.Pokemon
 
 @Composable
@@ -32,7 +34,7 @@ fun PokemonAbilitiesSection(pokemon: Pokemon) {
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = "Abilities",
+                text = stringResource(Res.string.abilities),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
@@ -77,7 +79,7 @@ private fun AbilityChip(
             if (isHidden) {
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    text = "(Hidden)",
+                    text = stringResource(Res.string.hidden_label),
                     style = MaterialTheme.typography.bodySmall,
                     color = Color.White.copy(alpha = 0.8f)
                 )

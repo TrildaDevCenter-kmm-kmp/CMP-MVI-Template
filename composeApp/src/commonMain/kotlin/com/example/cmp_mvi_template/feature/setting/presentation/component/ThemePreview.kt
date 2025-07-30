@@ -16,6 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+import cmp_mvi_template.composeapp.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
+
 @Composable
 fun ThemePreview() {
     Card {
@@ -25,7 +28,7 @@ fun ThemePreview() {
                 .padding(16.dp)
         ) {
             Text(
-                text = "Theme Preview",
+                text = stringResource(Res.string.theme_preview),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
@@ -46,7 +49,7 @@ fun ThemePreview() {
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Primary",
+                            text = stringResource(Res.string.primary),
                             color = MaterialTheme.colorScheme.onPrimary,
                             style = MaterialTheme.typography.labelMedium
                         )
@@ -65,7 +68,7 @@ fun ThemePreview() {
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Secondary",
+                            text = stringResource(Res.string.secondary),
                             color = MaterialTheme.colorScheme.onSecondary,
                             style = MaterialTheme.typography.labelMedium
                         )
@@ -84,7 +87,7 @@ fun ThemePreview() {
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Tertiary",
+                            text = stringResource(Res.string.tertiary),
                             color = MaterialTheme.colorScheme.onTertiary,
                             style = MaterialTheme.typography.labelMedium
                         )

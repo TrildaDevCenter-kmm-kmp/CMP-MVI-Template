@@ -14,6 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.cmp_mvi_template.core.data.datastore.ThemeMode
+import cmp_mvi_template.composeapp.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
+
 
 @Composable
 fun ThemeSelectionDialog(
@@ -38,14 +41,14 @@ fun ThemeSelectionDialog(
             ) {
                 // Dialog Title
                 Text(
-                    text = "Choose Theme",
+                    text = stringResource(Res.string.choose_theme),
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
                 Text(
-                    text = "Select your preferred theme mode",
+                    text = stringResource(Res.string.choose_theme_subtitle),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(top = 4.dp)
@@ -77,7 +80,7 @@ fun ThemeSelectionDialog(
                             contentColor = MaterialTheme.colorScheme.primary
                         )
                     ) {
-                        Text("Cancel")
+                        Text(stringResource(Res.string.cancel))
                     }
                 }
             }

@@ -22,8 +22,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import cmp_mvi_template.composeapp.generated.resources.*
 import coil3.compose.AsyncImage
 import com.example.cmp_mvi_template.feature.pokemon.domain.entity.Pokemon
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun PokemonCard(
@@ -127,7 +129,11 @@ fun PokemonCard(
                     ) {
                         Icon(
                             imageVector = if (favorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                            contentDescription = if (favorite) "Remove from favorites" else "Add to favorites",
+                            contentDescription = if (favorite) {
+                                stringResource(Res.string.remove_from_favorites)
+                            } else {
+                                stringResource(Res.string.add_to_favorites)
+                            },
                             tint = if (favorite) Color.Red else Color.White,
                             modifier = Modifier.size(24.dp)
                         )

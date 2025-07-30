@@ -19,7 +19,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import cmp_mvi_template.composeapp.generated.resources.Res
+import cmp_mvi_template.composeapp.generated.resources.base_stats
 import com.example.cmp_mvi_template.feature.pokemon.domain.entity.Pokemon
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun PokemonStatsSection(pokemon: Pokemon) {
@@ -30,7 +33,7 @@ fun PokemonStatsSection(pokemon: Pokemon) {
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = "Base Stats",
+                text = stringResource(Res.string.base_stats),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )

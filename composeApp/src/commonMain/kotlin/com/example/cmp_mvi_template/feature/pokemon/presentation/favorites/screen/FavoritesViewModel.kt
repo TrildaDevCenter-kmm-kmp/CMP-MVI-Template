@@ -3,6 +3,7 @@ package com.example.cmp_mvi_template.feature.pokemon.presentation.favorites.scre
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import cmp_mvi_template.composeapp.generated.resources.*
 import com.example.cmp_mvi_template.core.domain.onError
 import com.example.cmp_mvi_template.core.domain.onSuccess
 import com.example.cmp_mvi_template.core.domain.toUiText
@@ -54,11 +55,14 @@ class FavoritesViewModel(
             
             getFavoritesPokemonUseCase()
                 .catch { error ->
-                    _state.update { 
+                    _state.update { it ->
                         it.copy(
                             isLoading = false,
-                            error = UiText.DynamicString("Failed to load favorites")
-                        ) 
+                            error =
+                                error.message?.let { message->
+                                    UiText.DynamicString(message)
+                                } ?: UiText.StringResource(Res.string.error_failed_to_load_favorites)
+                        )
                     }
                 }
                 .collect { favoritesPokemon ->
@@ -79,7 +83,7 @@ class FavoritesViewModel(
                 .onSuccess {
                     _effect.emit(
                         FavoritesEffect.ShowSuccess(
-                            UiText.DynamicString("${pokemon.name} removed from favorites")
+                            UiText.StringResource(Res.string.success_removed_from_favorites, pokemon.name)
                         )
                     )
                 }

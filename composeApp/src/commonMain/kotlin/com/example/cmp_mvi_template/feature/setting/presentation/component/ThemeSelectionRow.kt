@@ -20,6 +20,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.cmp_mvi_template.core.utility.IconResource
 import com.example.cmp_mvi_template.core.utility.UiText
+import cmp_mvi_template.composeapp.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ThemeSelectionRow(
@@ -51,7 +53,7 @@ fun ThemeSelectionRow(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = "Theme Mode",
+                    text = stringResource(Res.string.theme_mode),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -65,7 +67,7 @@ fun ThemeSelectionRow(
 
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = "Change theme",
+                contentDescription = stringResource(Res.string.choose_theme),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
