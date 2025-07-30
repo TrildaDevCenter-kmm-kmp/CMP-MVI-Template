@@ -6,19 +6,20 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinSerialization)
+
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+
     alias(libs.plugins.buildkonfig)
-    alias(libs.plugins.kotlinx.serialization)
-    alias(libs.plugins.ksp)
+
     alias(libs.plugins.room)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
-    sourceSets.commonMain {
-        kotlin.srcDir("build/generated/ksp/metadata")
-    }
+    // Platform targets
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
@@ -44,87 +45,118 @@ kotlin {
         val desktopMain by getting
 
         androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-            // Ktor
-            implementation(libs.ktor.client.android)
+            // 🎨 Android Compose Preview (Default library)
+            implementation(compose.preview)                     // Compose preview for Android Studio
 
-            // Koin
-            implementation(libs.koin.android)
-            implementation(libs.koin.androidx.compose)
+            // 🎨 Activity Compose (Default library)
+            implementation(libs.androidx.activity.compose)     // Activity with Compose support
 
-            // Splash API
-            implementation(libs.androidx.core.splashscreen)
+            // 🖼️ Splash Screen
+            implementation(libs.androidx.core.splashscreen)    // Splash Screen
+
+            // 💉 Koin Android - Android-specific DI features
+            implementation(libs.koin.android)                  // Koin Android integration
+            implementation(libs.koin.androidx.compose)         // Koin AndroidX Compose integration
+
+            // 📡 Ktor Android - OkHttp engine for Android
+            implementation(libs.ktor.client.okhttp)            // OkHttp engine (best for Android)
+
+            // ⚡ Coroutines Android - Android coroutines support
+            implementation(libs.kotlinx.coroutines.android)    // Android coroutines dispatcher
         }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            // 🎨 Compose Multiplatform - UI Framework (Default libraries)
+            implementation(compose.runtime)                    // Compose runtime for state management
+            implementation(compose.foundation)                 // Foundation layouts and components
+            implementation(compose.ui)                        // Core UI components
+            implementation(compose.components.resources)       // Resource handling
+            implementation(compose.components.uiToolingPreview) // Preview support
 
-            // Material
-            implementation(compose.material3)
-            implementation(compose.materialIconsExtended)
+            // 🎨 Additional Material Design 3 - Enhanced design system
+            implementation(compose.material3)                  // Material3 design system
+            implementation(compose.material3AdaptiveNavigationSuite) // adaptive design
+            implementation(compose.materialIconsExtended) // Extended Material icons
+            implementation(compose.material3AdaptiveNavigationSuite)
+            implementation(libs.material3.adaptive)
 
-            // Navigation
-            implementation(libs.androidx.navigation.compose)
+            // 🧭 Navigation - Type-safe screen navigation
+            implementation(libs.androidx.navigation.compose)   // Compose navigation
 
-            // ViewModel
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
+            // 🔄 Lifecycle - ViewModel and state management (Default + Enhanced)
+            implementation(libs.androidx.lifecycle.viewmodel)         // ViewModel for business logic
+            implementation(libs.androidx.lifecycle.viewmodel.compose) // ViewModel integration with Compose
+            implementation(libs.androidx.lifecycle.runtime.compose)   // Lifecycle-aware Compose
 
-            //Coil
-            implementation(libs.coil.compose.core)
-            implementation(libs.coil.compose)
-            implementation(libs.coil.mp)
-            implementation(libs.coil.network.ktor3)
+            // ⚡ Coroutines - Asynchronous programming
+            implementation(libs.kotlinx.coroutines.core)       // Kotlin coroutines core
 
-            // Room + Sqlite
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.sqlite.bundled)
+            // 📡 Networking - HTTP client and serialization
+            implementation(libs.ktor.client.core)              // Ktor HTTP client core
+            implementation(libs.ktor.client.content.negotiation) // Content negotiation for JSON
+            implementation(libs.ktor.client.serialization)     // Serialization support
+            implementation(libs.ktor.serialization.kotlinx.json) // JSON serialization
+            implementation(libs.ktor.client.logging)           // HTTP request/response logging
+            implementation(libs.ktor.client.auth)              // Authentication support
 
-            // Ktor
-            implementation(libs.ktor.core)
-            implementation(libs.ktor.json)
-            implementation(libs.ktor.logging)
-            implementation(libs.ktor.negotiation)
-            implementation(libs.kotlinx.serialization.json)
+            // 💾 Local Storage - DataStore for preferences
+            implementation(libs.datastore.preferences)         // DataStore for user preferences
+            implementation(libs.datastore.core)               // DataStore core functionality
 
-            //Kermit  for logging
-            implementation(libs.kermit)
+            // 🗄️ Database - Room for local data storage
+            implementation(libs.androidx.room.runtime)         // Room database runtime
+            implementation(libs.sqlite.bundled)               // SQLite database engine
 
-            //dataStore
-            implementation(libs.androidx.data.store.core)
+            // 💉 Dependency Injection - Koin for DI
+            api(libs.koin.core)                     // Koin dependency injection core
+            implementation(libs.koin.compose)                  // Koin integration with Compose
+            implementation(libs.koin.composeVM)                // Koin ViewModel integration
 
-            // Koin
-            api(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.composeVM)
+            // 🖼️ Image Loading - Coil3 for loading images
+            implementation(libs.coil.compose)                  // Coil3 Compose integration
+            implementation(libs.coil.compose.core)            // Coil3 core functionality
+            implementation(libs.coil.network.ktor3)           // Coil3 network loading with Ktor
+            implementation(libs.coil.mp)                      // Coil3 multiplatform support
+
+            // 📅 Date & Time - Kotlinx datetime
+            implementation(libs.kotlinx.datetime)              // Multiplatform date/time handling
+
+            // 📦 Serialization - JSON parsing
+            implementation(libs.kotlinx.serialization.json)    // JSON serialization
+
+            // 📝 Logging - Kermit for multiplatform logging
+            implementation(libs.kermit)                        // TouchLab Kermit logger
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
         desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutinesSwing)
+            // 🖥️ Compose Desktop (Default library)
+            implementation(compose.desktop.currentOs)          // Platform-specific desktop support
 
-            // ktor
-            implementation(libs.ktor.client.okhttp)
+            // ⚡ Coroutines Swing (Default library)
+            implementation(libs.kotlinx.coroutines.swing)      // Swing dispatcher for desktop UI
+
+            // 📡 Ktor Desktop - OkHttp engine for Desktop
+            implementation(libs.ktor.client.okhttp)               // OkHttp engine
+
+
+            implementation("com.github.Dansoftowner:jSystemThemeDetector:3.6")
         }
-        iosMain.dependencies {
 
-            // Ktor
-            implementation(libs.ktor.client.darwin)
+        iosMain.dependencies {
+            // 🍎 iOS-specific dependencies
+
+            // 📡 Ktor iOS - Darwin engine for iOS
+            implementation(libs.ktor.client.darwin)            // Darwin engine (native iOS networking)
         }
         dependencies {
-            ksp(libs.androidx.room.compiler)
+            // 🗄️ Database - Room for local data storage
+            ksp(libs.androidx.room.compiler)                   // Room compiler
         }
     }
 }
-room {
-    schemaDirectory("$projectDir/schemas")
-}
+
+// 🤖 Android configuration
 android {
     namespace = "com.example.cmp_mvi_template"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -167,6 +199,12 @@ compose.desktop {
         }
     }
 }
+// 🗄️ Room configuration
+room {
+    schemaDirectory("$projectDir/schemas") // Database schema location
+}
+
+// BuildConfig
 buildkonfig {
     packageName = "com.example.cmp_mvi_template"
 
@@ -182,7 +220,12 @@ buildkonfig {
         buildConfigField(
             FieldSpec.Type.STRING,
             "API_KEY",
-            localProperties["API_KEY"]?.toString() ?: "",
+            localProperties["API_KEY"]?.toString(),
+        )
+        buildConfigField(
+            FieldSpec.Type.BOOLEAN,
+            "Is_Debug_Build",
+            localProperties["Is_Debug_Build"]?.toString(),
         )
     }
 }
