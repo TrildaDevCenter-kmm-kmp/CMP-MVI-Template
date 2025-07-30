@@ -1,4 +1,46 @@
-# MVI Compose Multiplatform Template ✨
+# Pokemon App - MVI Compose Multiplatform Template ✨
+
+A beautiful, modern Pokemon application built with Compose Multiplatform featuring MVI architecture, type-safe navigation, and dynamic theming. Explore Pokemon, manage favorites, and enjoy a seamless experience across Android, Desktop, and iOS platforms.
+
+## ✨ Features
+
+🎯 Core Features
+
+- 📱 Multiplatform: Android, Desktop, and iOS support
+- 🏗️ MVI Architecture: Clean, predictable state management
+- 🧭 Type-Safe Navigation: Kotlin Serialization-based routing
+- 🎨 Material 3 Design: Modern UI with dynamic theming
+- 🌓 Theme Management: Dark mode + Android Dynamic Colors
+- 💾 Offline Support: Room database for favorites
+- 🔄 Reactive UI: Real-time updates with StateFlow
+
+🐾 Pokemon Features
+
+- 🔍 Pokemon List: Browse all Pokemon with infinite scrolling
+- ❤️ Favorites Management: Add/remove Pokemon from favorites
+- 📊 Detailed View: Stats, abilities, types, and more
+- 🎨 Type-based Theming: Colors based on Pokemon types
+- ✨ Shimmer Loading: Beautiful loading animations
+
+🎭 UI/UX Features
+
+- 🌊 Smooth Animations: Page transitions and micro-interactions
+- 📱 Adaptive UI: Responsive design for all screen sizes
+- 👆 Swipe Actions: Swipe-to-delete favorites
+- 🌈 Dynamic Colors: Android 12+ Material You support
+- ⚡ Performance: Optimized with lazy loading and caching
+
+
+
+## Getting Started
+
+### Installation 🛠️
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/Coding-Meet/CMP-MVI-Template.git
+   ```
+2. Open in the latest version of Android Studio or intellij idea.
 
 ### Run the app on your device or emulator:
 
@@ -14,6 +56,112 @@
 - For Desktop with hot reload, run `./gradlew desktopRun -DmainClass=com.example.cmp_mvi_template.MainKt`
 
 
+## 🏗️ Architecture
+
+### Clean Architecture + MVI Pattern
+
+```
+📱 Presentation Layer (UI)
+├── 🎭 Compose Screens
+├── 🧠 ViewModels (MVI)
+└── 📊 State Management
+
+💼 Domain Layer (Business Logic)  
+├── 📋 Use Cases
+├── 🏪 Repository Interfaces
+└── 📦 Domain Models
+
+💾 Data Layer (Data Sources)
+├── 🌐 Remote (Ktor + PokéAPI)
+├── 💿 Local (Room Database)  
+└── 🔄 Repository Implementation
+```
+
+### Tech Stack
+
+- 🎯 UI: Compose Multiplatform + Material 3
+- 🏗️ Architecture: MVI + Clean Architecture + Use Cases
+- 🧭 Navigation: Compose Navigation + Type-safe routes
+- 🌐 Networking: Ktor Client + JSON Serialization
+- 💾 Database: Room + SQLite (multiplatform)
+- 🎨 Theming: DataStore Preferences + Dynamic Colors
+- 🔧 Dependency Injection: Koin
+- 🖼️ Images: Coil3 (async image loading)
+
+## 📁 Project Structure
+
+```
+CMP-MVI-Template/
+├── composeApp/                             # ✅ Main Compose Multiplatform app module
+│   ├── build.gradle.kts                    # ➕ Gradle config for this module
+│   ├── setting.preferences_pb              # 📦 Proto DataStore schema for user settings (theme, etc.)
+│
+│   └── src/
+│       ├── androidMain/                    # 🤖 Android-specific code
+│       │   ├── AndroidManifest.xml         # 📄 Manifest file for Android
+│       │   └── kotlin/
+│       │       └── com/example/cmp_mvi_template/
+│       │           ├── MainActivity.kt     # 🚀 Entry point for Android app
+│       │           ├── MyApplication.kt    # 🏁 Application class for Koin setup
+│       │           └── core/platform/      # 🔌 Android actual implementations for platform interfaces
+│
+│       ├── iosMain/                        # 🍎 iOS-specific code (uses Kotlin/Native)
+│       │   └── kotlin/
+│       │       └── com/example/cmp_mvi_template/
+│       │           ├── MainViewController.kt # 🧭 iOS screen entry point (UIKit)
+│       │           └── core/platform/        # 🔌 iOS actual implementations for platform interfaces
+│
+│       ├── desktopMain/                    # 🖥 Desktop-specific entry point
+│       │   └── kotlin/
+│       │       └── com/example/cmp_mvi_template/
+│       │           └── main.kt             # 💻 Desktop launcher with ComposeWindow
+│
+│       ├── commonMain/                     # 🔁 Shared code between all platforms
+│       │   ├── composeResources/           # 🎨 Compose Multiplatform resources (fonts, strings, etc.)
+│       │   └── kotlin/
+│       │       └── com/example/cmp_mvi_template/
+│       │
+│       │           ├── di/                 # 🧩 Dependency Injection modules using Koin
+│       │           │   ├── AppModule.kt
+│       │           │   └── PlatformModule.kt
+│       │
+│       │           ├── app/                # 🌐 App-level shared state (theme, scaffold, etc.)
+│       │           │   ├── AppViewModel.kt
+│       │           │   └── AppScaffold.kt
+│       │
+│       │           ├── core/               # 📚 Core layer for base domain, utils, and data sources
+│       │           │   ├── utility/        # 🔧 Utility helpers (formatters, validators, etc.)
+│       │           │   ├── domain/         # 📦 Base models like pagination, error handling
+│       │           │   ├── data/           # 🗃️ Base local + remote source contracts or shared logic
+│       │           │   └── platform/       # 🌍 Expect interfaces for platform-specific functionality
+│       │
+│       │           ├── ui/                 # 🧱 Reusable UI components
+│       │           │   ├── Button/
+│       │           │   ├── Dialog/
+│       │           │   ├── Layout/
+│       │           │   └── Theme/          # 🎨 Theme definitions (Typography, Colors, Dimens)
+│       │
+│       │           └── feature/            # 🌟 Feature modules – each screen or flow has its own folder
+│       │               ├── pokemon/        # 🐱 Pokemon feature (MVI pattern)
+│       │               │   ├── domain/     # 🔁 Business logic interfaces & models
+│       │               │   ├── data/       # 💾 Repository, fake/local/remote data
+│       │               │   ├── presentation/ # 🎭 UI state, event, screen, and ViewModel
+│       │               │   └── di/         # 🧩 Feature-specific DI
+│       │
+│       │               ├── setting/        # ⚙️ App settings (e.g., theme selection)
+│       │               │   └── presentation/ # 🎭 UI state + screen for settings
+│       │
+│       │               └── sample_example/ # 🧪 Optional example/template feature
+│       │                   ├── presentation/
+│       │                   └── domain/
+│       ├── commonTest/                     # 🧪 Shared unit tests
+│       │   └── com/example/cmp_mvi_template/
+│       │       └── ComposeAppCommonTest.kt # ✅ Sample shared test
+
+```
+
+## 📁 Detail Project Structure
+```
 └── CMP-MVI-Template/
 ├── composeApp/
 │   ├── setting.preferences_pb
@@ -286,63 +434,31 @@
 │                                   │   └── GetHttpClientEngine.ios.kt
 │                                   └── database/
 │                                       └── getDatabaseBuilder.ios.kt
+```
 
-composeApp/
-└── src/
-├── commonMain/kotlin/com/meet/recipe/
-│   ├── core/                           # Core utilities & infrastructure
-│   │   ├── network/
-│   │   │   ├── HttpClientFactory.kt
-│   │   │   └── NetworkExtensions.kt
-│   │   ├── utility/
-│   │   │   ├── Result.kt
-│   │   │   ├── DataError.kt
-│   │   │   └── UiText.kt
-│   │   ├── database/
-│   │   │   └── DatabaseFactory.kt
-│   │   ├── di/
-│   │   │   └── CoreModule.kt
-│   │   └── theme/
-│   │       ├── Theme.kt
-│   │       ├── Color.kt
-│   │       └── Typography.kt
-│   ├── navigation/                     # Type-safe navigation
-│   │   ├── AppDestination.kt
-│   │   ├── NavigationExtensions.kt
-│   │   └── AdaptiveNavigation.kt
-│   ├── shared/                         # Shared components
-│   │   ├── component/
-│   │   │   ├── card/
-│   │   │   ├── button/
-│   │   │   ├── input/
-│   │   │   └── layout/
-│   │   ├── model/
-│   │   └── util/
-│   └── feature/                        # Feature modules
-│       └── {feature_name}/
-│           ├── data/
-│           │   ├── repository/
-│           │   ├── remote/
-│           │   ├── local/
-│           │   └── mapper/
-│           ├── domain/
-│           │   ├── entity/
-│           │   ├── repository/
-│           │   └── usecase/
-│           ├── presentation/
-│           │   ├── screen/
-│           │   ├── component/
-│           │   └── viewmodel/
-│           └── di/
-├── androidMain/kotlin/com/meet/recipe/
-├── iosMain/kotlin/com/meet/recipe/
-└── desktopMain/kotlin/com/meet/recipe/
-├── local.properties
-├── build.gradle.kts
-├── settings.gradle.kts
-├── gradle.properties
-├── gradle/
-│   ├── libs.versions.toml
-│   └── wrapper/
-│       ├── gradle-wrapper.jar
-│       └── gradle-wrapper.properties
+
+## Contributing 🤝
+
+Feel free to contribute to this project by submitting issues, pull requests, or providing valuable
+feedback. Your
+contributions are always welcome! 🙌
+
+## ❤ Show your support
+
+Give a ⭐️ if this project helped you!
+
+<a href="https://www.buymeacoffee.com/codingmeet" target="_blank">
+<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="160">
+</a>
+
+Your generosity is greatly appreciated! Thank you for supporting this project.
+
+## Connect with me
+
+[![](https://img.shields.io/badge/Youtube-red?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@CodingMeet26?si=FuKwU-aBaf_5kukR)
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/coding-meet-a74933273/)
+[![](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/CodingMeet)
+
+## Author
+
+**Meet**
