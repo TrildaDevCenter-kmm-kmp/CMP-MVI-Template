@@ -65,7 +65,7 @@ fun PokemonCardShimmer() {
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Pokemon Image Shimmer
