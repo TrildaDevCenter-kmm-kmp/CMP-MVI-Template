@@ -1,5 +1,7 @@
 package com.example.cmp_mvi_template.core.domain
 
+import kotlinx.serialization.json.Json
+
 sealed interface ResultWrapper<out D, out E: Error> {
     data class Success<out D>(val data: D): ResultWrapper<D, Nothing>
     data class Error<out E: com.example.cmp_mvi_template.core.domain.Error>(val error: E):
@@ -31,9 +33,11 @@ inline fun <T, E: Error> ResultWrapper<T, E>.onError(action: (E) -> Unit): Resul
         is ResultWrapper.Success -> this
     }
 }
-inline fun <T, E : Error> ResultWrapper<T, E>.getOrNull(): T? {
+inline fun <reified T, E : Error> ResultWrapper<T, E>.getOrNull(): T? {
     return when (this) {
-        is ResultWrapper.Success -> data
+        is ResultWrapper.Success -> {
+            data
+        }
         is ResultWrapper.Error -> null
     }
 }
