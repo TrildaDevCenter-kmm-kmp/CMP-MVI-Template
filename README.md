@@ -30,8 +30,6 @@ A beautiful, modern Pokemon application built with Compose Multiplatform featuri
 - 🌈 Dynamic Colors: Android 12+ Material You support
 - ⚡ Performance: Optimized with lazy loading and caching
 
-
-
 ## Getting Started
 
 ### Installation 🛠️
@@ -435,6 +433,33 @@ CMP-MVI-Template/
 │                                   └── database/
 │                                       └── getDatabaseBuilder.ios.kt
 ```
+
+## 🎯 Next Goals
+
+Here are the upcoming tasks and feature enhancements planned for the project:
+
+- Koin Annotations Integration
+  - Use Koin Annotation processing (@Single, @Factory, etc.) to simplify and reduce boilerplate for dependency injection.
+
+- 🔄 GraphQL Support for Pokémon API
+  - Implement a GraphQL version of the Pokémon API using Ktor Client. Will be explored in a separate branch for experimentation.
+
+- 🗃️ SQLDelight Sample Integration
+  - Integrate SQLDelight only as a working code sample in a separate module/branch.
+  - Purpose: Keep reusable code ready for future use or cross-platform Kotlin projects.
+  - ✅ Room will continue as the primary local storage solution for this app.
+
+- ⚙️ Dev Tooling Scripts (Automation)
+  - Build Gradle or Kotlin-based scripts for:
+    - 🔁 Renaming package names along with folder structure
+    - 📦 Creating distributable builds per platform
+    - 🚀 Auto-generating feature modules with basic files (UI, ViewModel, State, Events) by providing just a feature name
+
+- 🧩 Component Showcase Screen
+  - All UI components are implemented but not visible inside the app.
+  - A new Component Explorer Screen will be added where:
+    - You can view all components (buttons, cards, inputs, etc.)
+    - Helpful for testing and design consistency on a real device
 
 
 ## Contributing 🤝
