@@ -1,6 +1,8 @@
 # Pokemon App - MVI Compose Multiplatform Template ✨
 
-A beautiful, modern Pokemon application built with Compose Multiplatform featuring MVI architecture, type-safe navigation, and dynamic theming. Explore Pokemon, manage favorites, and enjoy a seamless experience across Android, Desktop, and iOS platforms.
+A beautiful, modern Pokemon application built with Compose Multiplatform featuring MVI architecture,
+type-safe navigation, and dynamic theming. Explore Pokemon, manage favorites, and enjoy a seamless
+experience across Android, Desktop, and iOS platforms.
 
 ## ✨ Features
 
@@ -51,8 +53,92 @@ A beautiful, modern Pokemon application built with Compose Multiplatform featuri
   follow this link
   for [Ios](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-create-first-app.html#run-your-application-on-ios)
 - For Desktop, run `./gradlew :composeApp:run`
-- For Desktop with hot reload, run `./gradlew desktopRun -DmainClass=com.example.cmp_mvi_template.MainKt`
+- For Desktop with hot reload, run
+  `./gradlew desktopRun -DmainClass=com.example.cmp_mvi_template.MainKt`
 
+## Screenshot 💻
+
+## Android
+
+<table>
+   <tr>
+    <td><img src="screenshot/android/1_android.png" alt="android"></td>
+    <td><img src="screenshot/android/2_android.png" alt="android"></td>
+    <td><img src="screenshot/android/3_android.png" alt="android"></td>
+    <td><img src="screenshot/android/4_android.png" alt="android"></td>
+   </tr>
+   <tr>
+    <td><img src="screenshot/android/5_android.png" alt="android"></td>
+    <td><img src="screenshot/android/6_android.png" alt="android"></td>
+    <td><img src="screenshot/android/7_android.png" alt="android"></td>
+    <td><img src="screenshot/android/8_android.png" alt="android"></td>
+   </tr>
+   <tr>
+    <td><img src="screenshot/android/9_android.png" alt="android"></td>
+    <td><img src="screenshot/android/10_android.png" alt="android"></td>
+    <td><img src="screenshot/android/11_android.png" alt="android"></td>
+    <td><img src="screenshot/android/12_android.png" alt="android"></td>
+    </tr>
+   <tr>
+    <td><img src="screenshot/android/13_android.png" alt="android"></td>
+    <td><img src="screenshot/android/14_android.png" alt="android"></td>
+    <td><img src="screenshot/android/15_android.png" alt="android"></td>
+   </tr>
+</table>
+
+## IOS
+
+<table>
+   <tr>
+        <td><img src="screenshot/ios/1_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/2_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/3_ios.png" alt="ios"></td>
+   </tr>
+   <tr>
+        <td><img src="screenshot/ios/4_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/5_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/6_ios.png" alt="ios"></td>
+   </tr>
+    <tr>
+        <td><img src="screenshot/ios/7_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/8_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/9_ios.png" alt="ios"></td>
+    </tr>
+    <tr>
+        <td><img src="screenshot/ios/10_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/11_ios.png" alt="ios"></td>
+        <td><img src="screenshot/ios/12_ios.png" alt="ios"></td>
+    </tr>
+</table>
+
+## Desktop
+
+<table>
+   <tr>
+        <td><img src="screenshot/desktop/1_desktop.png" alt="desktop"></td>
+        <td><img src="screenshot/desktop/2_desktop.png" alt="desktop"></td>
+   </tr>
+    <tr>
+        <td><img src="screenshot/desktop/3_desktop.png" alt="desktop"></td>
+        <td><img src="screenshot/desktop/4_desktop.png" alt="desktop"></td>
+    </tr>
+    <tr>
+        <td><img src="screenshot/desktop/5_desktop.png" alt="desktop"></td>
+        <td><img src="screenshot/desktop/6_desktop.png" alt="desktop"></td>
+    </tr>
+    <tr>
+        <td><img src="screenshot/desktop/7_desktop.png" alt="desktop"></td>
+        <td><img src="screenshot/desktop/8_desktop.png" alt="desktop"></td>
+    </tr>
+    <tr>
+        <td><img src="screenshot/desktop/9_desktop.png" alt="desktop"></td>    
+        <td><img src="screenshot/desktop/10_desktop.png" alt="desktop"></td>
+    </tr>
+    <tr>
+        <td><img src="screenshot/desktop/11_desktop.png" alt="desktop"></td>
+        <td><img src="screenshot/desktop/12_desktop.png" alt="desktop"></td>    
+    </tr>
+</table>
 
 ## 🏗️ Architecture
 
@@ -159,6 +245,7 @@ CMP-MVI-Template/
 ```
 
 ## 📁 Detail Project Structure
+
 ```
 └── CMP-MVI-Template/
 ├── composeApp/
@@ -439,35 +526,38 @@ CMP-MVI-Template/
 Here are the upcoming tasks and feature enhancements planned for the project:
 
 - Koin Annotations Integration
-  - Use Koin Annotation processing (@Single, @Factory, etc.) to simplify and reduce boilerplate for dependency injection.
+    - Use Koin Annotation processing (@Single, @Factory, etc.) to simplify and reduce boilerplate
+      for dependency injection.
 
 - 🔄 GraphQL Support for Pokémon API
-  - Implement a GraphQL version of the Pokémon API using Ktor Client. Will be explored in a separate branch for experimentation.
+    - Implement a GraphQL version of the Pokémon API using Ktor Client. Will be explored in a
+      separate branch for experimentation.
 
 - 🗃️ SQLDelight Sample Integration
-  - Integrate SQLDelight only as a working code sample in a separate module/branch.
-  - Purpose: Keep reusable code ready for future use or cross-platform Kotlin projects.
-  - ✅ Room will continue as the primary local storage solution for this app.
+    - Integrate SQLDelight only as a working code sample in a separate module/branch.
+    - Purpose: Keep reusable code ready for future use or cross-platform Kotlin projects.
+    - ✅ Room will continue as the primary local storage solution for this app.
 
 - ⚙️ Dev Tooling Scripts (Automation)
-  - Build Gradle or Kotlin-based scripts for:
-    - 🔁 Renaming package names along with folder structure
-    - 📦 Creating distributable builds per platform
-    - 🚀 Auto-generating feature modules with basic files (UI, ViewModel, State, Events) by providing just a feature name
+    - Build Gradle or Kotlin-based scripts for:
+        - 🔁 Renaming package names along with folder structure
+        - 📦 Creating distributable builds per platform
+        - 🚀 Auto-generating feature modules with basic files (UI, ViewModel, State, Events) by
+          providing just a feature name
 
 - 🧩 Component Showcase Screen
-  - All UI components are implemented but not visible inside the app.
-  - A new Component Explorer Screen will be added where:
-    - You can view all components (buttons, cards, inputs, etc.)
-    - Helpful for testing and design consistency on a real device
+    - All UI components are implemented but not visible inside the app.
+    - A new Component Explorer Screen will be added where:
+        - You can view all components (buttons, cards, inputs, etc.)
+        - Helpful for testing and design consistency on a real device
 
 - 🧪 Unit & Instrumented Testing
-  - Add unit tests for core business logic and ViewModels
-  - Add instrumented UI tests for critical user flows
-  - Integrate test coverage tools for quality tracking
+    - Add unit tests for core business logic and ViewModels
+    - Add instrumented UI tests for critical user flows
+    - Integrate test coverage tools for quality tracking
 
 - 📱 Maestro Integration (UI Flow Testing)
-  - Set up Maestro to define UI flow test scripts
+    - Set up Maestro to define UI flow test scripts
 
 ## Contributing 🤝
 
