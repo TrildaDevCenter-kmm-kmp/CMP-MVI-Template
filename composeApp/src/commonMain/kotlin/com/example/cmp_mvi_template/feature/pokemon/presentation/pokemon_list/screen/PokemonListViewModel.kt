@@ -4,9 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cmp_mvi_template.core.domain.Paginator
 import com.example.cmp_mvi_template.core.domain.getOrNull
-import com.example.cmp_mvi_template.core.domain.mapCatching
+import com.example.cmp_mvi_template.core.domain.toUiText
 import com.example.cmp_mvi_template.core.utility.AppLogger
-import com.example.cmp_mvi_template.core.utility.UiText
 import com.example.cmp_mvi_template.feature.pokemon.domain.entity.Pokemon
 import com.example.cmp_mvi_template.feature.pokemon.domain.entity.PokemonListItem
 import com.example.cmp_mvi_template.feature.pokemon.domain.entity.PokemonSprites
@@ -51,7 +50,7 @@ class PokemonListViewModel(
             AppLogger.d("PokemonListViewModel"){
                 "onRequest offset: $offset"
             }
-            getPokemonListUseCase(limit, offset).mapCatching()
+            getPokemonListUseCase(limit, offset)
         },
         getNextKey = { currentOffset, _ ->
             AppLogger.d("PokemonListViewModel"){
@@ -59,12 +58,10 @@ class PokemonListViewModel(
             }
             currentOffset + limit
         },
-        onError = { throwable ->
+        onError = { error ->
             _state.update {
                 it.copy(
-                    error = UiText.DynamicString(
-                        throwable.message.toString()
-                    )
+                    error = error.toUiText()
                 )
             }
         },

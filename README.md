@@ -461,6 +461,13 @@ Here are the upcoming tasks and feature enhancements planned for the project:
     - You can view all components (buttons, cards, inputs, etc.)
     - Helpful for testing and design consistency on a real device
 
+- 🧪 Unit & Instrumented Testing
+  - Add unit tests for core business logic and ViewModels
+  - Add instrumented UI tests for critical user flows
+  - Integrate test coverage tools for quality tracking
+
+- 📱 Maestro Integration (UI Flow Testing)
+  - Set up Maestro to define UI flow test scripts
 
 ## Contributing 🤝
 

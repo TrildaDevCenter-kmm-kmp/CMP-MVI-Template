@@ -31,12 +31,6 @@ inline fun <T, E: Error> ResultWrapper<T, E>.onError(action: (E) -> Unit): Resul
         is ResultWrapper.Success -> this
     }
 }
-inline fun <T, E : Error> ResultWrapper<T, E>.mapCatching(): Result<T> {
-    return when (this) {
-        is ResultWrapper.Success -> Result.success(data)
-        is ResultWrapper.Error -> Result.failure(Exception(error.toString()))
-    }
-}
 inline fun <T, E : Error> ResultWrapper<T, E>.getOrNull(): T? {
     return when (this) {
         is ResultWrapper.Success -> data
