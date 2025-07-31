@@ -35,27 +35,12 @@ fun PokemonCard(
     onFavoriteClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
-    var isPressed by remember { mutableStateOf(false) }
-    
-    val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.95f else 1f,
-        animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessLow
-        ),
-        label = "card_scale"
-    )
-
     Card(
         modifier = modifier
             .fillMaxWidth()
             .height(120.dp)
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .scale(scale)
-            .clickable {
-                isPressed = true
-                onPokemonClick()
-            },
+            .padding(8.dp),
+        onClick = onPokemonClick,
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = getPokemonTypeColor(pokemon.types.firstOrNull()?.type?.name)
