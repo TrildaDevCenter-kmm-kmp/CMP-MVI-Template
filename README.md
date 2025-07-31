@@ -4,6 +4,8 @@ A beautiful, modern Pokemon application built with Compose Multiplatform featuri
 type-safe navigation, and dynamic theming. Explore Pokemon, manage favorites, and enjoy a seamless
 experience across Android, Desktop, and iOS platforms.
 
+[![News Kotlin Multiplatform AppPreview](screenshot/pokemon_cmp_mvi_template.png)]()
+
 ## ✨ Features
 
 🎯 Core Features
