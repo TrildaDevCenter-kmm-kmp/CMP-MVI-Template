@@ -43,6 +43,13 @@ experience across Android, Desktop, and iOS platforms.
    git clone https://github.com/Coding-Meet/CMP-MVI-Template.git
    ```
 2. Open in the latest version of Android Studio or intellij idea.
+3. This project includes a demo of how to use BuildConfig.
+   (Note: The API key here is just a placeholder and not used in the app.)
+   Create or update your local.properties with:
+   ```
+   API_KEY=API_KEY
+   Is_Debug_Build=true
+   ```
 
 ### Run the app on your device or emulator:
 
